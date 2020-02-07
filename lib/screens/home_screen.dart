@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -30,20 +32,21 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _initSounds() async {
-    _soundpool = Soundpool();
+    try {
+      _soundpool = Soundpool();
 
-//    _soundIds[0] = await rootBundle
-//        .load("assets/sounds/sound1.mp3")
-//        .then((value) => _soundpool.load(value));
+      _soundIds[0] = await loadSound("assets/sounds/sound1.mp3");
+      _soundIds[1] = await loadSound("assets/sounds/sound2.mp3");
+      _soundIds[2] = await loadSound("assets/sounds/sound3.mp3");
+      _soundIds[3] = await loadSound("assets/sounds/sound4.mp3");
+      _soundIds[4] = await loadSound("assets/sounds/sound5.mp3");
+      _soundIds[5] = await loadSound("assets/sounds/sound6.mp3");
 
-    _soundIds[0] = await loadSound("assets/sounds/sound1.mp3");
-    _soundIds[1] = await loadSound("assets/sounds/sound2.mp3");
-    _soundIds[2] = await loadSound("assets/sounds/sound3.mp3");
-    _soundIds[3] = await loadSound("assets/sounds/sound4.mp3");
-    _soundIds[4] = await loadSound("assets/sounds/sound5.mp3");
-    _soundIds[5] = await loadSound("assets/sounds/sound6.mp3");
+      setState(() {});
+    } on IOException catch(error) {
+      print("エラーの内容: $error");
+    }
 
-    setState(() {});
   }
 
   Future<int> loadSound(String soundPath) {
