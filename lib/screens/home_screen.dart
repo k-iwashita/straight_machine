@@ -117,8 +117,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
         padding: EdgeInsets.all(8.0),
         child: RaisedButton(
+          color: Colors.brown,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.elliptical(0, 0))
+          ),
           onPressed: () => _playSound(soundId),
-          child: Text(descriptions),
+          child: Text(descriptions, style: TextStyle(color: Colors.white),),
         ));
   }
 
