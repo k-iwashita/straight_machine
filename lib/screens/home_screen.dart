@@ -27,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _initSounds();
 
     super.initState();
-
   }
 
   Future<void> _initSounds() async {
@@ -44,14 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
     _soundIds[4] = await loadSound("assets/sounds/sound5.mp3");
     _soundIds[5] = await loadSound("assets/sounds/sound6.mp3");
 
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   Future<int> loadSound(String soundPath) {
-    return rootBundle.load(soundPath).then((value) => _soundpool.load(value) );
-
+    return rootBundle.load(soundPath).then((value) => _soundpool.load(value));
   }
 
   @override
@@ -126,5 +122,4 @@ class _HomeScreenState extends State<HomeScreen> {
   void _playSound(int soundId) {
     _soundpool.play(soundId);
   }
-
 }
